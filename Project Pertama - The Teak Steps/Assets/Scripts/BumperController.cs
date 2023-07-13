@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BumperController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float forceMultiplier = 3f;
     [SerializeField] private Material hitMaterial;
 
     private Animator animator;
@@ -28,7 +28,7 @@ public class BumperController : MonoBehaviour
         if (rb)
         {
             // Multiply velociti bola dengan moveSpeed
-            rb.velocity *= moveSpeed;
+            rb.velocity *= forceMultiplier;
 
             // Trigger animation hit
             animator.SetTrigger("Hit");
