@@ -112,8 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd83525aab9115e4986e2b89a8e96c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.5
-  hitMaterial: {fileID: 2100000, guid: b74ee20008495d447947c49ac540a18c, type: 2}
+  forceMultiplier: 3
+  materials:
+  - {fileID: 2100000, guid: 45d467fbcaf27e649a2e3fc7d1fd004f, type: 2}
+  - {fileID: 2100000, guid: 9e302b7d6c717154a8f1892f5a0fe51d, type: 2}
+  - {fileID: 2100000, guid: 87927c3bdc77b51438671c139de8b81f, type: 2}
 --- !u!95 &6189783165871547541
 Animator:
   serializedVersion: 5
