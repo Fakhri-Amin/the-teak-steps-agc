@@ -38,5 +38,10 @@ public class BallController : MonoBehaviour
         {
             ResetBallPosition();
         }
+
+        if (other.CompareTag("Coin"))
+        {
+            other.gameObject.SetActive(false);
+        }
     }
 }
