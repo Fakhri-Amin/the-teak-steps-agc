@@ -2,53 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinManager : MonoBehaviour
+public class TrapManager : MonoBehaviour
 {
-    [SerializeField] private int maxCoins;
+    [SerializeField] private int maxTraps;
     [SerializeField] private float spawnDelay;
-
-    [SerializeField] private GameObject coinPrefab;
+         
+    [SerializeField] private GameObject trapPrefab;
     [SerializeField] private List<Transform> spawnPositions;
 
-    private List<GameObject> coinPool;
+    private List<GameObject> trapPool;
 
     private void Start()
     {
-        coinPool = new List<GameObject>();
+        trapPool = new List<GameObject>();
 
-        for (int i = 0; i < maxCoins; i++)
+        for (int i = 0; i < maxTraps; i++)
         {
-            var coin = Instantiate(coinPrefab, gameObject.transform, true);
-            coin.SetActive(false);
-            coinPool.Add(coin);
+            GameObject trap = Instantiate(trapPrefab, gameObject.transform, true);
+            trap.SetActive(false);
+            trapPool.Add(trap);
         }
 
-        StartCoroutine(SpawnCoins());
+        StartCoroutine(SpawnTraps());
     }
 
-    private IEnumerator SpawnCoins()
+    private IEnumerator SpawnTraps()
     {
         while (true)
         {
             yield return new WaitForSeconds(spawnDelay);
-            SpawnCoin();
+            SpawnTrap();
         }
     }
 
-    private void SpawnCoin()
+    private void SpawnTrap()
     {
-        for (int i = 0;i < coinPool.Count; i++)
+        for (int i = 0; i < trapPool.Count; i++)
         {
-            if (!coinPool[i].activeInHierarchy)
+            if (!trapPool[i].activeInHierarchy)
             {
                 Transform spawnPosition = GetRandomSpawnPosition();
 
                 //Cek apakah spawn position sudah terpakai
                 bool positionIsAvailable = true;
-                for (int j = 0; j < coinPool.Count; j++)
+                for (int j = 0; j < trapPool.Count; j++)
                 {
-                    if (coinPool[j].activeInHierarchy && 
-                        coinPool[j].transform.position == spawnPosition.position)
+                    if (trapPool[j].activeInHierarchy &&
+                        trapPool[j].transform.position == spawnPosition.position)
                     {
                         positionIsAvailable = false;
                         break;
@@ -57,9 +57,9 @@ public class CoinManager : MonoBehaviour
 
                 if (positionIsAvailable)
                 {
-                    coinPool[i].transform.position = spawnPosition.position;
-                    coinPool[i].SetActive(true);
-
+                    trapPool[i].transform.position = spawnPosition.position;
+                    trapPool[i].SetActive(true);
+                    
                     break;
                 }
             }

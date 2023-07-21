@@ -34,7 +34,7 @@ public class BallController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("BottomWall"))
+        if (other.CompareTag("BottomWall") || other.CompareTag("Trap"))
         {
             ResetBallPosition();
         }
